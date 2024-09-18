@@ -3,10 +3,9 @@ import pandas as pd
 from dotenv import load_dotenv
 import time
 import datetime
-import asyncio
 from api_smart import login_smart, status_receita
 from api_miliapp import obter_tokens_tiny, get_vendas_filtro
-from api_tiny_v3 import obter_pedidos_v3, obter_pedido_v3
+from api_tiny_v3 import obter_pedidos_v3
 from api_intelipost import consulta_entrega
 
 load_dotenv()
@@ -71,11 +70,7 @@ def main():
         numero_pedido = pedido_atual['numeroPedido']
         print(numero_pedido)
         ecommerce = pedido_atual['ecommerce']
-        # numero_ecommerce = ecommerce['numeroPedidoEcommerce']
         data_criacao = pedido_atual['dataCriacao']
-        # cliente = pedido_atual['cliente']
-        # valor = pedido_atual['valor']
-        # vendedor = pedido_atual['vendedor']
         transportador = pedido_atual['transportador']
         try:
             if transportador != None:
@@ -186,22 +181,22 @@ def main():
 
                         match codigo_status_bip_smart:
                             case 2:
-                                status_bip_smart = 'PCP';
+                                status_bip_smart = 'PCP'
                             case 3:
-                                status_bip_smart = 'FARMACÊUTICA';
+                                status_bip_smart = 'FARMACÊUTICA'
                             case 4:
-                                status_bip_smart = 'PESAGEM';
+                                status_bip_smart = 'PESAGEM'
                             case 5:
-                                status_bip_smart = 'ENCAPSULAÇÃO';
+                                status_bip_smart = 'ENCAPSULAÇÃO'
                             case 6:
-                                status_bip_smart = 'P. MÉDIO / ENVASE';
+                                status_bip_smart = 'P. MÉDIO / ENVASE'
                             case 7:
-                                status_bip_smart = 'FINALIZAÇÃO';
+                                status_bip_smart = 'FINALIZAÇÃO'
                             case 8:
-                                status_bip_smart = 'DERMATO';
+                                status_bip_smart = 'DERMATO'
                             case 9:
-                                status_bip_smart = 'HOMEOPATIA';
-                
+                                status_bip_smart = 'HOMEOPATIA'
+            
                         nova_linha = [
                             id,
                             numero_pedido,
@@ -300,5 +295,4 @@ def main():
     print("Execution time in seconds: " + str(execution_time))
     return
 
-# asyncio.run(main())
 main()
