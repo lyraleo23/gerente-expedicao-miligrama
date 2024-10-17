@@ -1,3 +1,5 @@
 __pycache__
 venv
 .env
+output
+lista_pedidos.xlsx

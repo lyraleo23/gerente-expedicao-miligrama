@@ -47,23 +47,25 @@ def main():
     prazo_envio = 3
 
     for situacao in lista_situacao:
+        os.system('cls')
+        print(f'Buscando pedidos no status: {situacao}')
         params = {
             'situacao': situacao,
             'orderBy': 'asc',
-            'dataInicial': '2024-07-01',
-            'dataFinal': '2024-09-30'
+            'dataInicial': '2024-06-01',
+            # 'dataFinal': '2024-10-31'
         }
         lista_parcial = obter_pedidos_v3(ACCESS_TOKEN, params)
         print(len(lista_parcial))
         lista_pedidos = [*lista_pedidos, *lista_parcial]
         print(f'lista_pedidos: {len(lista_pedidos)}')
-
     print(f'total: {len(lista_pedidos)}')
 
     count = 0
 
     for pedido_atual in lista_pedidos:
         count = count + 1
+        os.system('cls')
         print(f'===== {count}/{len(lista_pedidos)} =====')
         id = pedido_atual['id']
         situacao = pedido_atual['situacao']
@@ -292,7 +294,9 @@ def main():
     hora = hora[0].replace(':','_')
     os.rename('lista_pedidos.xlsx', f'lista_pedidos_envios_pendentes_{data}_{hora}.xlsx')
     execution_time = time.time() - start_time
+    os.system('cls')
     print("Execution time in seconds: " + str(execution_time))
+    print('Concluído!')
     return
 
 main()

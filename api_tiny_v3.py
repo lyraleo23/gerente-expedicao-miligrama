@@ -38,7 +38,6 @@ def obter_pedidos_v3(ACCESS_TOKEN, PARAMS):
 
 def obter_pedido_v3(ACCESS_TOKEN, id_pedido):
     url = f'https://api.tiny.com.br/public-api/v3/pedidos/{id_pedido}'
-    print(url)
 
     payload = ''
     headers = {
@@ -52,7 +51,6 @@ def obter_pedido_v3(ACCESS_TOKEN, id_pedido):
 
 def gerar_nota_fiscal_v3(ACCESS_TOKEN, id_pedido):
     url = f'https://api.tiny.com.br/public-api/v3/pedidos/{id_pedido}/gerar-nota-fiscal'
-    print(url)
 
     payload = ''
     headers = {
@@ -66,7 +64,6 @@ def gerar_nota_fiscal_v3(ACCESS_TOKEN, id_pedido):
 
 def incluir_marcadores_v3(ACCESS_TOKEN, id_pedido, marcadores):
     url = f'https://api.tiny.com.br/public-api/v3/pedidos/{id_pedido}/marcadores'
-    print(url)
 
     headers = {
         'Content-Type': 'application/json',
