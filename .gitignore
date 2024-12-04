@@ -3,3 +3,5 @@ venv
 .env
 output
 lista_pedidos.xlsx
+gerente-expedicao-nicole.py
+gerente-expedicao-isabelle.py

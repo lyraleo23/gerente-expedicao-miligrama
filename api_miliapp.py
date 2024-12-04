@@ -43,7 +43,7 @@ def obter_item_miliapp(id):
 
     return response.json()['data'][0]
 
-def obter_tokens_tiny():
+def obter_tokens_tiny(origin):
     url = f'https://api.fmiligrama.com/tiny/token?sorting='
 
     headers = {
@@ -55,7 +55,12 @@ def obter_tokens_tiny():
     response = requests.request("GET", url, headers=headers, data=payload)
     response = response.json()
 
-    access_token = response[-1]['access_token']
-    refresh_token = response[-1]['refresh_token']
+    for token in response:
+        if token['origin'] == origin:
+            access_token = token['access_token']
+            refresh_token = token['refresh_token']
+    
+    # access_token = response[-1]['access_token']
+    # refresh_token = response[-1]['refresh_token']
 
     return access_token, refresh_token
