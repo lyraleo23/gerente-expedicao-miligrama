@@ -27,15 +27,3 @@ def status_receita(TOKEN_SMART, PARAMS):
 
     response = requests.request("GET", url, headers=headers, data=payload)
     return response
-
-def obter_req_smart(TOKEN_SMART, req_smart):
-    url = f'https://api2.naiferautomacao.com.br/receitas/show?page=1&id={req_smart}'
-
-    payload = {}
-    headers = {
-        'Authorization': f'Bearer {TOKEN_SMART}'
-    }
-
-    response = requests.request("GET", url, headers=headers, data=payload)
-
-    return response.json()[0]

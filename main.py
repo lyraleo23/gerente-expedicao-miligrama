@@ -12,9 +12,10 @@ load_dotenv()
 CNPJ = str(os.getenv('CNPJ'))
 USERNAME_ = str(os.getenv('USERNAME_'))
 PASSWORD = str(os.getenv('PASSWORD'))
+TOKEN_MILIAPP = str(os.getenv('TOKEN_MILIAPP'))
 TOKEN_SMART = login_smart(CNPJ, USERNAME_, PASSWORD)
 TOKEN_INTELIPOST = str(os.getenv('TOKEN_INTELIPOST'))
-ACCESS_TOKEN, REFRESH_TOKEN = obter_tokens_tiny()
+ACCESS_TOKEN, REFRESH_TOKEN = obter_tokens_tiny(TOKEN_MILIAPP, 'miligrama')
 
 def main():
     start_time = time.time()
@@ -113,7 +114,7 @@ def main():
 
         # ===== Busca as informações do pedido no miliapp =====
         try:
-            pedido_miliapp = get_vendas_filtro(numero_pedido)
+            pedido_miliapp = get_vendas_filtro(TOKEN_MILIAPP, numero_pedido)
             req_smart_list = pedido_miliapp.get('req_smart_list', [])
             numero_nota_fiscal = pedido_miliapp.get('numero_nota_fiscal', '')
             pedido_tipo_interno = pedido_miliapp.get('pedido_tipo_interno', '')
